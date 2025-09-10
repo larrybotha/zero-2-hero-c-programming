@@ -5,3 +5,12 @@ Learnings from https://lowlevel.academy/courses/zero2hero
 ## Goal
 
 To understand computers better. Understanding C should make it easier to understand what languages I'm proficient in are doing, and should assist in picking up other languages with concepts that arw foreign to the languages I'm familiar with.
+
+## Setup
+
+`gcc` is not easily available for termux, so we use `zig cc` instead:
+
+```shell
+$ apt update && apt upgradea -y
+$ apt install zig build-essential
+```
