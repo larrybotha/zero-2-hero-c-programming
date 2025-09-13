@@ -14,9 +14,5 @@ watch in out="tmp":
   extension=${filename##*.}
   dest="{{ out }}/${name}"
 
-  echo "Watching {{ in }} for changes..."
-  echo "Outputting to {{ out }}"
-  echo "Executing ./${dest}"
-
   watchexec --clear --exts c,h \
     "just build {{ in }} ${dest} && echo '' && ./${dest}"
