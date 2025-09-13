@@ -53,10 +53,11 @@ e.g. the following are equivalent:
 ```c
 char xs[] = {'h', 'e', 'l'. 'l', 'o', 0};
 char *x = "hello";
-``  
+``
 
 strings are terminated by a null byte (`\0`). This indicates where a string ends, otherwise a program may continue reading memory beyond what is allocated for the string.
 
 `strcopy`, for instance, only stops copying when it hits a null byte.
 
 Defining a string using the deref operator, as opposednto as a string, automatically appends the terminating null byte
+
