@@ -130,6 +130,63 @@ calculation on `i` to get the first byte, one could instead evaluate `c`,
 which will return the first byte because of how much memory is allocated to
 that value
 
+## Pointers & memory allocation
 
+The word size boundary of the architecture determines the increments for virtual addresses.
 
+e.g. if there is a 4 byte boundary, we may see the following addresses and allocations:
 
+| virtual address | data    | note |
+| ---             | ---     | ---  |
+| 0x1000          | 0x0     |      |
+| 0x1004          | 0x1234  | 4 bytes of data    |
+| 0x1008          | 0x100C  | a reference to a memory afdress, i.e. a pointer    |
+| 0x100C          | 0x0     |      |
+| 0x1010          | 0x0     |      |
+### 
+
+The most important thing to know about the memory model when working in C is that:
+
+- there are memory addresses
+- there is data at those addresses
+
+See these articles for clarification on virtual memory and memory mappings:
+
+- https://sam4k.com/linternals-virtual-memory-part-1/
+- https://sam4k.com/linternals-virtual-memory-0x02/
+
+Hexadeciml can represent larger numbers in fewer characters than binary and decimal. Furthermore, a 2-digit hex value can represent a byte - i.e. an 8-bit binary value van be written as a 2 character hex value
+
+- 0x0f => b00001111 => 128
+- 0xff => b11111111 => 256
+
+### Process memory map
+
+The OS maps a process's virtual memory to physical memory
+
+This map is roughly structured like this:
+
+- text segment - contains executable code
+- initialised data segment - global and static variables of the process
+- uninitialised data segment - uninitialised global and static variables of the process
+- heap - dynamically allocated memory
+    - grows upward
+    - affected by:
+        - malloc
+        - realloc
+        - free
+- stack - memory for function calls and scoped variables
+    - grows downward
+- memory-mapped regions - shared libraries and files in memory
+    - lies between stack and heap
+
+To evaluate a process's memory map, one can use `/proc/self/maps/ on Linux. e.g.
+
+```shell
+$ cat /proc/self/maps
+```
+
+Further reading: 
+
+- https://en.wikipedia.org/wiki/Virtual_memory
+- https://www.cprogramming.com/tutorial/c/lesson6.htmlz 
