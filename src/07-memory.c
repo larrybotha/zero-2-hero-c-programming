@@ -2,22 +2,18 @@
 #include <stdlib.h>
 
 int main() {
-	int *ptr = (int *)malloc(sizeof(int));
+  int *ptr = (int *)malloc(sizeof(int));
 
-	if (ptr == NULL) {
-		printf("Memory allocation failed\\n");
-        	
-		return 1;
-	}
+  if (ptr == NULL) {
+    printf("Memory allocation failed\\n");
 
-	*ptr = 42;
+    return 1;
+  }
 
-	printf(
-			"value: %d, address: %p\\n",
-			*ptr,
-			(void*)ptr
-	);
-	free(ptr)
+  *ptr = 42;
 
-	return 0;
+  printf("value: %d, address: %p\\n", *ptr, (void *)ptr);
+  free(ptr);
+
+  return 0;
 }

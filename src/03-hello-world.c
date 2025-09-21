@@ -3,5 +3,5 @@
 int main() {
   char *text = "Hello, World!";
 
-	printf("%s\n", text);
+  printf("%s\n", text);
 }
