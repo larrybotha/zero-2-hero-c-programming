@@ -217,9 +217,11 @@ Further reading:
         points to memory that is no longer valid
 - `malloc` and a number of functions can be read about via man-pages - do it
 
+### Static memory allocation
 
+Memory can be statically allocated using the `static` keyword
 
-
-
-
-
+- statically defined variables are initialised in the global scope, but are only available within the scope they are defined. i.e. they are initialised once, despite them appearing to have local scope
+- they allow for hiding values from outside access, known as "data hiding"
+- they are not assigned addresses on the stack (function scope), or heap (dymamic allocation) - they are assigned addresses in the 'data' section of mapped memory, which means the memory is not cleaned after the function they are defined in goes out of scope
+- this is useful to mitigate data races. Global variables present a few issues, but are particularly problematic in threaded code, where it's important to know which thread has locked a value against writes
