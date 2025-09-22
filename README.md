@@ -203,3 +203,23 @@ Further reading:
 - [https://en.wikipedia.org/wiki/Virtual_memory](https://en.wikipedia.org/wiki/Virtual_memory)
 - [https://www.cprogramming.com/tutorial/c/lesson6.htmlz](https://www.cprogramming.com/tutorial/c/lesson6.htmlz)
 
+### Dynamic memory allocation
+
+- `malloc` is used for dynamically allocating memory on the heap - it returns a
+    pointer
+- `malloc` is not guaranteed to succeed - always ensure that the pointer is not
+    NULL
+- whenever we're done with memory allocated using `malloc` or other dynamic memory
+    allocation methods, use `free` to make that memory available to other processes
+- always set freed pointers to `NULL` once they are no longer in use - this prevents
+    'use-after-free' errors
+  - this is not required, but results in a *dangling pointer*; a pointer that
+        points to memory that is no longer valid
+- `malloc` and a number of functions can be read about via man-pages - do it
+
+
+
+
+
+
+
